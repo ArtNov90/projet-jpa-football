@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +27,18 @@ public class Matchs {
     private String homeScore;
 	@Column(name = "AWAYSCORE")
     private String awayScore;
+	
+	 @ManyToOne
+	    @JoinColumn(name = "country", nullable = false)
+	    private Team homeTeam;
+
+	    @ManyToOne
+	    @JoinColumn(name = "country_1", nullable = false)
+	    private Team awayTeam;
+
+	    @ManyToOne
+	    @JoinColumn(name = "nom_tournoi", nullable = false)
+	    private Tournoi tournoi;
     
 	public Matchs(String idMatch, String dateMatch, String city, Boolean neutral, String homeScore, String awayScore) {
 		

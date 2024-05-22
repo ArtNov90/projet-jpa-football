@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +20,14 @@ public class TireAuBut {
 	private Boolean winnerCountry;
 	@Column(name = "FIRST_SHOOTER")
 	private String firstShooter;
+
+	@ManyToOne
+	@JoinColumn(name = "id_match", nullable = false)
+	private Matchs match;
+
+	@ManyToOne
+	@JoinColumn(name = "country", nullable = false)
+	private Team team;
 
 	public TireAuBut(String idTirAuBut, Boolean winnerCountry, String firstShooter) {
 		super();

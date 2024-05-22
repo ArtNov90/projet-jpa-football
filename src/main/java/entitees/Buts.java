@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,14 +14,22 @@ import jakarta.persistence.Table;
 public class Buts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_MATCH")
+	@Column(name = "ID_BUT")
 	private String idBut;
-	@Column(name = "ID_MATCH")
+	@Column(name = "MINUTE_BUT_MARQUE")
 	private String minuteButMarque;
-	@Column(name = "ID_MATCH")
+	@Column(name = "IS_PENALTY")
 	private Boolean isPenalty;
-	@Column(name = "ID_MATCH")
+	@Column(name = "OWN_GOAL")
 	private Boolean ownGoal;
+	
+    @ManyToOne
+    @JoinColumn(name = "id_joueur", nullable = false)
+    private Joueur joueur;
+
+    @ManyToOne
+    @JoinColumn(name = "id_match", nullable = false)
+    private Matchs match;
 
 	public Buts(String idBut, String minuteButMarque, Boolean isPenalty, Boolean ownGoal) {
 		super();
