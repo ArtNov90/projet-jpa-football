@@ -1,4 +1,4 @@
-package entitees;
+package fr.diginamic.d02202024.projetjpafootball.entitees;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,23 +15,27 @@ public class Buts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_BUT")
-	private String idBut;
+	private Integer idBut;
 	@Column(name = "MINUTE_BUT_MARQUE")
 	private String minuteButMarque;
 	@Column(name = "IS_PENALTY")
 	private Boolean isPenalty;
 	@Column(name = "OWN_GOAL")
 	private Boolean ownGoal;
-	
-    @ManyToOne
-    @JoinColumn(name = "id_joueur", nullable = false)
-    private Joueur joueur;
 
-    @ManyToOne
-    @JoinColumn(name = "id_match", nullable = false)
-    private Matchs match;
+	@ManyToOne
+	@JoinColumn(name = "id_joueur", nullable = false)
+	private Joueur joueur;
 
-	public Buts(String idBut, String minuteButMarque, Boolean isPenalty, Boolean ownGoal) {
+	@ManyToOne
+	@JoinColumn(name = "id_match", nullable = false)
+	private Matchs match;
+
+	public Buts() {
+		super();
+	}
+
+	public Buts(Integer idBut, String minuteButMarque, Boolean isPenalty, Boolean ownGoal) {
 		super();
 		this.idBut = idBut;
 		this.minuteButMarque = minuteButMarque;
@@ -39,12 +43,12 @@ public class Buts {
 		this.ownGoal = ownGoal;
 	}
 
-	public String getIdBut() {
+	public Integer getIdBut() {
 		return idBut;
 	}
 
-	public void setIdBut(String idBut) {
-		this.idBut = idBut;
+	public void setIdBut(Integer string) {
+		this.idBut = string;
 	}
 
 	public String getMinuteButMarque() {
@@ -70,4 +74,5 @@ public class Buts {
 	public void setOwnGoal(Boolean ownGoal) {
 		this.ownGoal = ownGoal;
 	}
+
 }

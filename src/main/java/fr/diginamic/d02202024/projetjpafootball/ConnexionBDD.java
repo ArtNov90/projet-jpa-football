@@ -1,4 +1,4 @@
-package fr.diginamic.d02202024.projet_jpa_football;
+package fr.diginamic.d02202024.projetjpafootball;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

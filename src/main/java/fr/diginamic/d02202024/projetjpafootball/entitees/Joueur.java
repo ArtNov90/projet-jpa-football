@@ -1,10 +1,17 @@
-package entitees;
+package fr.diginamic.d02202024.projetjpafootball.entitees;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +25,30 @@ public class Joueur {
 	private String prenom;
 	@Column(name = "NOM")
 	private String nom;
+
+	@ManyToOne
+	@JoinColumn(name = "country", nullable = false)
+	private Team team;
+
+	@OneToMany(mappedBy = "joueur", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Buts> buts;
+	
+	{
+		buts = new HashSet<>();
+	}
+
+	public Joueur() {
+		super();
+	}
+	
+	
+
+	public Joueur(String nom) {
+		super();
+		this.nom = nom;
+	}
+
+
 
 	public Joueur(String idJoueur, String prenom, String nom) {
 		super();
@@ -49,5 +80,23 @@ public class Joueur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public Set<Buts> getButs() {
+		return buts;
+	}
+
+	public void setButs(Set<Buts> buts) {
+		this.buts = buts;
+	}
+	
+	
 
 }

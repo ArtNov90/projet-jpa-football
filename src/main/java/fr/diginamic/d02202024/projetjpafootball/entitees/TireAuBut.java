@@ -1,4 +1,5 @@
-package entitees;
+package fr.diginamic.d02202024.projetjpafootball.entitees;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +29,10 @@ public class TireAuBut {
 	@ManyToOne
 	@JoinColumn(name = "country", nullable = false)
 	private Team team;
+
+	public TireAuBut() {
+		super();
+	}
 
 	public TireAuBut(String idTirAuBut, Boolean winnerCountry, String firstShooter) {
 		super();
@@ -59,4 +64,16 @@ public class TireAuBut {
 	public void setFirstShooter(String firstShooter) {
 		this.firstShooter = firstShooter;
 	}
+
+	public void setWinner(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setIdMatch(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
